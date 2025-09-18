@@ -69,7 +69,7 @@ flowchart TD
 ### 5.2 Használati esetek
 
 ```mermaid
-usecaseDiagram
+usecase
 actor Felhasználó
 Felhasználó --> (Hírek listázása)
 Felhasználó --> (Keresés)
