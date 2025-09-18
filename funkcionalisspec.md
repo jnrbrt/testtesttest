@@ -2,7 +2,7 @@
 
 ## 1. Jelenlegi helyzet leírása
 
-
+szia szia szia
 
 ## 2. Vágyálomrendszer leírása
 
