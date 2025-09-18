@@ -6,7 +6,7 @@ szia szia szia
 
 ## 2. Vágyálomrendszer leírása
 
-
+vágyam egy álom
 
 ## 3. Jelenlegi üzleti folyamatok modellje
 
