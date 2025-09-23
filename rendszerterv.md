@@ -2,188 +2,105 @@
 
 ## 1. A rendszer célja
 
-A rendszer célja egy egyszerű webes hírportál létrehozása, amely a hírek közzétételére és átlátható böngészésére szolgál.  
-A felhasználók gyorsan és egyszerűen érhetik el a legfrissebb híreket, kategória és kulcsszó alapján kereshetnek.
+A rendszer célja egy egyszerű webes hírportál létrehozása, amely lehetővé teszi a felhasználók számára a legfrissebb hírek gyors és átlátható elérését. A portál célja, hogy a hírek könnyen kategorizálhatók és kereshetők legyenek, így a látogatók kényelmesen böngészhetnek különböző témákban.
+
+A portál nem foglal magában komplex interaktív funkciókat, mint például felhasználói fiókok létrehozása vagy hozzászólások írása. Ezzel tisztázzuk a projekt hatókörét: a cél a tartalom megjelenítése és egyszerű kezelhetősége.
+
+**Alcélok:**
+
+- Gyors betöltési idő biztosítása minden eszközön.
+- Mobilbarát megjelenés a felhasználói élmény növelése érdekében.
+- Egyszerű és könnyen karbantartható kódstruktúra kialakítása.
 
 ## 2. Projekt terv
 
 ### 2.1 Projekt szerepkörök és felelősségek
 
-- **Megrendelő** – elvárások meghatározása, rendszer elfogadása  
-- **Projektvezető** – koordináció, dokumentáció  
-- **Frontend fejlesztő** – HTML, CSS, JavaScript  
-- **Tesztelő** – funkcionális tesztek  
+- **Megrendelő**: meghatározza az elvárásokat, jóváhagyja a projekt mérföldköveit, ellenőrzi az átadott verziókat.  
+- **Projektvezető**: felel a projekt ütemezéséért, koordinálja a csapatot, dokumentálja a folyamatokat és a döntéseket.  
+- **Frontend fejlesztő**: HTML, CSS és JavaScript fejlesztés, a felhasználói felület megvalósítása.  
+- **Tesztelő**: a funkciók működésének ellenőrzése, hibák rögzítése, javaslat a fejlesztői javításokra.  
 
 ### 2.2 Fejlesztő eszközök
 
-VS Code, Git, Chrome/Firefox fejlesztői eszközök
+- VS Code, mint fő fejlesztői környezet.  
+- Git verziókezelés a kód nyomon követéséhez.  
+- Böngésző fejlesztői eszközök (Chrome/Firefox), hibakereséshez és teljesítmény elemzéshez.  
+
+### 2.3 Ütemterv és mérföldkövek
+
+- **Kezdő fázis**: követelmények rögzítése, tervezési alapok meghatározása.  
+- **Fejlesztési fázis**: HTML alapok, CSS stílus és elrendezés, JavaScript funkciók.  
+- **Tesztelési fázis**: integrációs és funkcionális tesztek, hibajavítások.  
+- **Átadás**: MVP verzió bemutatása, visszajelzések gyűjtése, végső finomhangolás.  
 
 ## 3. Üzleti folyamatok modellje
 
 ### 3.1 Üzleti szereplők
 
-- **Felhasználó** – híroldal látogatója  
-- **Rendszer** – hírek megjelenítése, keresés és szűrés  
+- **Felhasználó**: látogatja az oldalt, böngészi a híreket, szűr, keres és olvas.  
+- **Rendszer**: felelős a hírek megjelenítéséért, kategorizálásáért, keresés és lapozás biztosításáért.  
 
 ### 3.2 Üzleti folyamatok
 
+A felhasználó a főoldalon elindulva a híreket kategória vagy kulcsszó alapján szűrheti. A részletes cikk megtekintése után visszatérhet a listaoldalra, vagy lapozhat a következő hírekhez.
+
+**Folyamat lépései:**
+
+1. Főoldal megnyitása.  
+2. Hírek listázása, alapértelmezett időrend szerint.  
+3. Kategória szerinti szűrés alkalmazása.  
+4. Kulcsszó alapján történő keresés.  
+5. Részletes cikk megtekintése.  
+6. Lapozás a következő oldalakra, ha nagyobb számú hír van.  
+
+### 3.3 Üzleti entitások
+
+- **Hír**: tartalmazza a címet, kivonatot, teljes szöveget, dátumot és kategóriát.  
+- **Kategória**: azonosító és név alapján csoportosítja a híreket.  
+
+#### Ábra: Üzleti folyamat diagram
 ```mermaid
 flowchart TD
   A[Főoldal] --> B[Hírek listázása]
   B --> C[Kategória szűrés]
-  B --> D[Keresés]
+  B --> D[Keresés kulcsszó alapján]
   C --> E[Részletes nézet]
   D --> E
-  E --> F[Lapozás]
+  E --> F[Lapozás következő oldalakra]
 ```
-
-## 3.3 Üzleti entitások
-
-- **Hír:** cím, kivonat, szöveg, dátum, kategória  
-- **Kategória:** azonosító, név  
 
 ## 4. Követelmények
 
-### 4.1 Funkcionális követelmények
 
-- Hírek listázása időrendben  
-- Kategóriák szerinti szűrés  
-- Kulcsszavas keresés címben és szövegben  
-- Részletes cikk nézet  
-- Lapozás nagy elemszám esetén  
-- Hibakezelés: „Nincs találat” és 404 oldal  
-
-### 4.2 Nem funkcionális követelmények
-
-- Egyszerű, letisztult felület  
-- Gyors betöltés és stabil működés  
-- Könnyen karbantartható kód  
 
 ## 5. Funkcionális terv
 
-### 5.1 Rendszer szereplők
 
-- Felhasználó  
-- Rendszer  
-
-### 5.2 Használati esetek
-
-```mermaid
-flowchart TD
-    Felhasználó --> Hírek["Hírek listázása"]
-    Felhasználó --> Kereses["Keresés"]
-    Felhasználó --> Kategoria["Kategória választás"]
-    Felhasználó --> Reszletes["Részletes nézet"]
-    Felhasználó --> Lapozas["Lapozás"]
-```
-
-### 5.3 Határ osztályok
-
-- `index.html` – főoldali lista  
-- `article.html` – részletes nézet  
-
-### 5.4 Menü hierarchia
-
-```mermaid
-flowchart TD
-  Home[Főoldal] --> News[Hírek]
-  Home --> Filter[Kategóriák]
-  Home --> Search[Kereső]
-  News --> Detail[Cikk részletei]
-```
-
-### 5.5 Képernyőtervek
-
-- Főoldal: hírek listája, kategória szűrő, keresőmező  
-- Részletes cikk nézet: cím, teljes szöveg, dátum, kategória, vissza gomb  
 
 ## 6. Fizikai környezet
 
-### 6.1 Fizikai alrendszerek
 
-- HTML réteg  
-- CSS megjelenítés  
-- JS logika  
 
 ## 7. Absztrakt domain modell
 
-```mermaid
-classDiagram
-  class Hir {
-    +cim
-    +kivonat
-    +tartalom
-    +datum
-    +kategoria
-  }
-  class Kategoria {
-    +id
-    +nev
-  }
-  Hir --> Kategoria
-```
-
-## 7.1 Domain specifikáció
-
-Hírek, kategóriák és metaadatok
-
-## 7.2 Absztrakt komponensek
-
-- Hírkezelő modul  
-- Szűrő modul  
-- Kereső modul  
-- Megjelenítő modul  
+  
 
 ## 8. Architekturális terv
 
-### 8.1 Tervezési minta
 
-Rétegzett architektúra: UI (HTML/CSS), logika (JS), adat (JS objektumok)
-
-```mermaid
-flowchart TD
-  UI[HTML + CSS] --> Logic[JS logika]
-  Logic --> Data[JS objektumok]
-```
-
-## 8.2 Biztonsági funkciók
-
-- Csak olvasható tartalom  
-- Nincs adatbevitel  
 
 ## 9. Adatbázis terv
 
-```mermaid
-erDiagram
-  HIR {
-    int id
-    string cim
-    string kivonat
-    string tartalom
-    date datum
-    int kategoria_id
-  }
-  KATEGORIA {
-    int id
-    string nev
-  }
-  HIR }o--|| KATEGORIA : tartozik
-```
+
 
 ## 10. Implementációs terv
 
-- HTML, CSS, JS fájlok moduláris szerkezete  
-- Frontend: hírlap lista, keresés, szűrés, részletes cikk nézet  
-- Kódolási alapelvek: moduláris, jól kommentált, könnyen bővíthető  
+
 
 ## 11. Telepítési terv
 
-- Fájlok feltöltése web szerverre  
-- Verziókezelés Git segítségével  
-- Kézi deploy és ellenőrzés  
+
 
 ## 12. Karbantartási terv
 
-- Hibajavítások manuális teszteléssel  
-- Funkciók bővítése igény szerint  
-- Verziók nyomon követése Git-ben  
