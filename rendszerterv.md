@@ -72,15 +72,96 @@ flowchart TD
 
 ## 4. Követelmények
 
+### 4.1 Funkcionális követelmények
 
+- Hírek listázása időrendben a főoldalon.  
+- Kategóriák szerinti szűrés lehetősége.  
+- Kulcsszavas keresés címben és szövegben.  
+- Részletes cikk megtekintése, teljes szöveggel és metaadatokkal.  
+- Lapozás nagy elemszám esetén.  
+- Hibakezelés: „Nincs találat” és 404 oldal megjelenítése.
+
+### 4.2 Nem funkcionális követelmények
+
+- Egyszerű, letisztult felhasználói felület, könnyen áttekinthető navigációval.  
+- Gyors betöltési idő és stabil működés minden modern böngészőben.  
+- Könnyen karbantartható, moduláris kódstruktúra.  
+- Alapvető böngésző kompatibilitás biztosítása, különböző képernyőméreteken is.
 
 ## 5. Funkcionális terv
 
+### 5.1 Rendszer szereplők
 
+- **Felhasználó:** böngészi a híreket, keres és szűr.  
+- **Rendszer:** biztosítja a hírek elérhetőségét, keresés és szűrés funkciókat.
+
+### 5.2 Használati esetek
+
+```mermaid
+usecaseDiagram
+actor Felhasználó
+Felhasználó --> (Hírek listázása)
+Felhasználó --> (Keresés kulcsszó alapján)
+Felhasználó --> (Kategória választás)
+Felhasználó --> (Részletes nézet megnyitása)
+Felhasználó --> (Lapozás több oldal esetén)
+```
+
+## 5.3 Határ osztályok
+
+- **index.html**: főoldali hírek listája, kategória szűrő és keresőmező.  
+- **article.html**: részletes cikk megtekintés, metaadatokkal együtt.
+
+## 5.4 Menü hierarchia
+
+```mermaid
+flowchart TD
+  Home[Főoldal] --> News[Hírek listája]
+  Home --> Filter[Kategóriák szerinti szűrés]
+  Home --> Search[Keresőmező]
+  News --> Detail[Cikk részletei]
+```
+
+# 5.5 Képernyőtervek
+
+- **Főoldal:** hírek listája, kategória szűrő, keresőmező, lapozás.  
+- **Részletes nézet:** cím, teljes szöveg, dátum, kategória, vissza gomb.  
+
+```mermaid
+graph LR
+  Főoldal --> HírekLista
+  Főoldal --> Szűrő
+  Főoldal --> Kereső
+  HírekLista --> RészletesNézet
+```
 
 ## 6. Fizikai környezet
 
+## 6.1 Fizikai alrendszerek
 
+A rendszer fizikai környezete három fő rétegre épül, amelyek egymással összhangban működnek, de külön-külön is fejleszthetők és karbantarthatók.
+
+### HTML réteg
+- Feladata a tartalom strukturált megjelenítése.
+- Főoldali hírek listája, részletes cikkek, kategóriák és keresőmező biztosítása.
+- Fontos a szabványos és valid HTML használata, hogy minden böngészőben egységesen jelenjen meg a felület.
+
+### CSS réteg
+- Kezeli a vizuális megjelenést: színek, betűtípusok, gombok, elrendezés.
+- Támogatja a moduláris stílusokat, amelyek könnyen bővíthetők.
+- Reszponzív design: mobil, tablet és asztali eszközök támogatása.
+- Általános stílusok: gombok, linkek, fejléc és lábléc egységes megjelenése.
+
+### JavaScript réteg
+- Felelős a keresés, szűrés és lapozás logikájáért.
+- Moduláris felépítés: minden funkció önálló modulban, könnyen karbantartható.
+- Kommunikál a HTML réteggel a DOM manipuláció révén és a CSS-sel a dinamikus megjelenítéshez.
+
+```mermaid
+flowchart TD
+  HTML[HTML réteg] --> CSS[CSS réteg]
+  CSS --> JS[JavaScript réteg]
+```
 
 ## 7. Absztrakt domain modell
 
