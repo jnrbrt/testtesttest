@@ -351,3 +351,11 @@ A karbantartási ciklus célja a hírportál folyamatos megbízhatóságának é
 - **Frissítések tervezése:** 
   - Az új funkciók és hibajavítások ütemezése a következő fejlesztési ciklusokra.
   - Minden frissítés előzetes tesztelésen és jóváhagyáson megy keresztül a minőség biztosítása érdekében.
+
+```mermaid
+flowchart TD
+  Tesztelés[Heti/Havi tesztelés] --> HibákRögzítése[Hibák és funkcióigények dokumentálása]
+  HibákRögzítése --> Prioritás[Prioritások meghatározása]
+  Prioritás --> Fejlesztés[Frissítések és hibajavítások ütemezése]
+  Fejlesztés --> Tesztelés
+```
