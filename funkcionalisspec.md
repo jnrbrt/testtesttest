@@ -39,27 +39,134 @@ A vágyálomrendszer alapot biztosít a jövőbeli fejlesztésekhez (pl. felhasz
 
 ## 3. Jelenlegi üzleti folyamatok modellje
 
+A hírek előállítása folyamatosan történik, de:  
 
+- nincs egységes publikálási csatorna,  
+- a hírek nyilvánosan nem érhetők el,  
+- a tárolás rendszertelen és nem szabványos,  
+- az érdeklődők nem tudják egy központi helyen követni az eseményeket,  
+- a keresés és szűrés teljesen hiányzik,  
+- a frissítések manuálisan, lassan zajlanak.  
+
+Ez az állapot nem támogatja sem a belső munkafolyamatokat, sem a felhasználók tájékoztatását.
+
+---
 
 ## 4. Igényelt üzleti folyamatok modellje
 
+A tervezett rendszer az alábbi folyamatokat biztosítja:
 
+1. **Hírek böngészése főoldalon:**  
+   - Felhasználó megnyitja a főoldalt.  
+   - A rendszer automatikusan időrendi sorrendben jeleníti meg a híreket.  
+
+2. **Kategóriák szerinti szűrés:**  
+   - Felhasználó választ egy kategóriát.  
+   - Csak az adott témához tartozó hírek jelennek meg.  
+
+3. **Kulcsszavas keresés:**  
+   - Felhasználó beír egy keresőkifejezést.  
+   - A rendszer a releváns híreket listázza.  
+
+4. **Részletes megtekintés:**  
+   - Felhasználó egy hír címére kattint.  
+   - A részletes nézetben teljes szöveg, dátum és kategória látható.  
+
+5. **Lapozás és hibakezelés:**  
+   - Nagy elemszám esetén a hírek több oldalra bontva jelennek meg.  
+   - „Nincs találat” üzenet, ha nincs eredmény.  
+   - 404 hiba, ha egy cikk nem elérhető.  
+
+---
 
 ## 5. Követelménylista
 
+### Funkcionális követelmények
+- Hírek listázása főoldalon időrendi sorrendben.  
+- Kategóriák szerinti szűrés.  
+- Kulcsszavas keresés (cím + szöveg).  
+- Részletes cikknézet dátummal és kategóriával.  
+- Lapozás több hír esetén.  
+- Hibakezelés: „Nincs találat”, 404-es oldal.  
 
+### Nem funkcionális követelmények
+- **Egyszerűség:** minimalista és felhasználóbarát felület.  
+- **Teljesítmény:** gyors betöltés és keresés.  
+- **Megbízhatóság:** folyamatos és stabil működés.  
+- **Biztonság:** alapvető webes biztonsági szabályok betartása.  
+- **Kompatibilitás:** működés minden modern böngészőben és eszközön.  
+- **Karbantarthatóság:** jól strukturált, dokumentált kód.  
+
+---
 
 ## 6. Használati esetek (Use-case)
 
+### Use-case 1: Hírek listázása főoldalon
+- **Szereplő:** Felhasználó  
+- **Előfeltétel:** Felhasználó megnyitotta a főoldalt  
+- **Lépések:**  
+  1. A rendszer betölti a legutóbbi híreket (pl. 10 darab).  
+  2. Megjelenik a cím, rövid kivonat és dátum.  
+- **Utófeltétel:** Felhasználó áttekinti a híreket.  
 
+### Use-case 2: Hír részletes megtekintése
+- **Szereplő:** Felhasználó  
+- **Előfeltétel:** Hírek listája megjelent  
+- **Lépések:**  
+  1. Felhasználó rákattint a cikk címére.  
+  2. Megjelenik a részletes nézet teljes szöveggel, dátummal, kategóriával.  
+- **Utófeltétel:** Felhasználó elolvassa a teljes cikket.  
+
+### Use-case 3: Keresés kulcsszó alapján
+- **Szereplő:** Felhasználó  
+- **Előfeltétel:** Főoldal megnyitva  
+- **Lépések:**  
+  1. Felhasználó beír egy kulcsszót a keresőmezőbe.  
+  2. Rendszer megjeleníti a releváns találatokat.  
+- **Utófeltétel:** Felhasználó megkapja a keresett információt, vagy „Nincs találat” üzenetet.  
+
+---
 
 ## 7. Képernyőtervek (leírás szöveges formában)
 
+- **Főoldal:**  
+  Időrendi hírek listája rövid kivonattal. Oldalsávban kategória szűrő. Fejlécben keresőmező.  
 
+- **Részletes cikk nézet:**  
+  Cikk címe, teljes szövege, dátuma, kategóriája. Vissza gomb a főoldalra.  
+
+- **Keresés eredménye:**  
+  A találatok listája cím + kivonat formában, azonos elrendezésben, mint a főoldalon.  
+
+- **Lapozás:**  
+  Az oldal alján navigáció a következő/előző oldalakhoz.  
+
+---
 
 ## 8. Forgatókönyvek
 
+1. **Egyszerű böngészés:**  
+   Felhasználó megnyitja a főoldalt → hírek listája megjelenik → kiválaszt egy hírt → részletes nézet betöltődik → visszalép a főoldalra.  
 
+2. **Keresés folyamata:**  
+   Felhasználó beír egy kulcsszót → találatok megjelennek → felhasználó kiválaszt egy cikket → részletes nézet betöltődik.  
+
+3. **Kategóriák szerinti böngészés:**  
+   Felhasználó választ egy kategóriát → csak releváns hírek jelennek meg → lapozás szükség esetén.  
+
+4. **Hibakezelés:**  
+   Felhasználó keresést indít, de nincs eredmény → „Nincs találat” üzenet jelenik meg.  
+   Felhasználó elér egy törölt hírt → rendszer 404-es oldalt ad vissza.  
+
+---
 
 ## 9. Funkció – követelmény megfeleltetés
 
+| Funkció                   | Kapcsolódó követelmény             | Megjegyzés                  |
+|----------------------------|-----------------------------------|-----------------------------|
+| Hírek listázása főoldalon  | Legfrissebb hírek megjelenítése   | Időrendi sorrend            |
+| Kategória szerinti szűrés  | Kategóriák szerinti megjelenítés  | Oldalsávban                 |
+| Kulcsszavas keresés        | Cím és szöveg keresése            | Nincs találat esetén üzenet |
+| Részletes cikkmegtekintés  | Teljes szöveg, dátum, kategória   | Vissza a főoldalra          |
+| Lapozás                    | Több hír esetén                   | Oldalankénti megjelenítés   |
+| Hibakezelés                | 404, Nincs találat                | Felhasználói értesítés      |
