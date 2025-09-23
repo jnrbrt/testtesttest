@@ -2,59 +2,89 @@
 
 ## 1. Jelenlegi helyzet leírása
 
-A szervezet jelenleg nem rendelkezik saját online felülettel, amelyen híreket tehetne közzé vagy rendszerezve elérhetővé tehetné.
-A meglévő információk belső dokumentumokban, különböző csatornákon tárolódnak, de ezek nem kereshetők, nem strukturáltak, és nem nyilvánosan hozzáférhetők.
-Ez megnehezíti a hírek gyors elérését a felhasználók számára.
-Nincs olyan felület, amely összegyűjti és egységes formában mutatja be a híreket.
-A hírekhez való hozzáférés rendszertelen, és nem biztosított a témák szerinti szűrés vagy kereshetőség.
-A felhasználók számára nem áll rendelkezésre egyszerű, áttekinthető hírportál, amely kizárólag a hírek megjelenítésére koncentrál.
+A szervezet jelenleg nem rendelkezik saját, nyilvánosan elérhető online felülettel, ahol híreket lehetne közzétenni és rendszerezett módon publikálni.  
+Az információk jelenleg különféle csatornákon, például belső dokumentumokban, e-mailekben vagy szórványos jegyzetekben találhatók meg.  
+Ez a széttagolt megoldás számos problémát okoz:
+
+- **Átláthatatlanság:** A hírek nem strukturáltak, így nehéz őket gyorsan visszakeresni.  
+- **Elérhetetlenség:** A hírek csak belső használatra vannak meg, a külső érdeklődők nem férhetnek hozzá.  
+- **Rendszertelenség:** A hírek közlésének nincs kialakult folyamata vagy egységes felülete.  
+- **Felhasználói nehézségek:** A felhasználók számára nem áll rendelkezésre könnyen kezelhető és áttekinthető hírportál.  
+
+Ennek következtében a felhasználók információhoz jutása lassú, pontatlan és sokszor esetleges. Hiányzik egy olyan központi eszköz, amely biztosítaná a hírek egységes közzétételét és gyors elérhetőségét.
 
 ## 2. Vágyálomrendszer leírása
 
-A tervezett rendszer egy egyszerű webes hírportál, amely lehetővé teszi a hírek közzétételét és rendszerezett megjelenítését.
-A felhasználó a főoldalon azonnal látja a legfrissebb híreket, időrendben rendezve, rövid kivonattal együtt.
-A hírek kategóriákhoz tartoznak, így a felhasználó szűrhet adott témákra, például sport, politika vagy technológia.
-A kulcsszavas keresés lehetővé teszi, hogy a felhasználó gyorsan megtalálja a számára releváns híreket a címekben és a teljes szövegben.
-Egy hír címére kattintva a felhasználó eléri a részletes nézetet, ahol megjelenik a teljes szöveg, a dátum és a kategória.
-A rendszer egyszerű, letisztult felülettel rendelkezik, amely a navigációt és a tartalom gyors elérését támogatja.
-Az MVP verzióban kizárólag a hírmegjelenítés és -böngészés funkciói szerepelnek, a regisztráció, hozzászólás vagy egyéb interakciók nem elérhetők.
+A jövőbeni rendszer egy egyszerű, letisztult webes **hírportál** lesz, amelynek fő célja a hírek könnyen elérhető és kereshető formában történő megjelenítése.  
+Az alábbi tulajdonságokat fogja biztosítani:
+
+- **Főoldali áttekintés:** A felhasználók a kezdőlapon azonnal láthatják a legfrissebb híreket, időrendbe rendezve. Minden hír rövid kivonattal jelenik meg, hogy gyorsan áttekinthető legyen a tartalom.  
+- **Kategorizálás:** A hírek kategóriákhoz tartoznak (pl. sport, politika, technológia), így a felhasználók szűrhetnek egy-egy témára.  
+- **Kulcsszavas keresés:** A rendszer támogatja a hírek címében és teljes szövegében való keresést, ezzel gyors elérést biztosítva a releváns információkhoz.  
+- **Részletes nézet:** A hír címére kattintva a felhasználó elérheti a cikk teljes szövegét, a megjelenés dátumát és a kategóriát.  
+- **Egyszerű használhatóság:** A felület minimalista és intuitív, amely lehetővé teszi, hogy a felhasználók technikai háttértudás nélkül is könnyedén használják.  
+- **MVP fókusz:** A kezdeti verzióban a rendszer kizárólag a hírmegjelenítésre és böngészésre koncentrál, tehát nem tartalmaz bonyolult funkciókat (pl. regisztrációt, hozzászólásokat, személyre szabást).  
+
+A vágyálomrendszer hosszú távon bővíthető, de az alapoknál a gyors, egyszerű és megbízható hírmegjelenítés az elsődleges cél.
 
 ## 3. Jelenlegi üzleti folyamatok modellje
 
-- A hírek előállítása megtörténik, de jelenleg nincs egységes, digitális publikálási csatorna.
-- A szervezet belsőleg rendelkezik a hírek tartalmával, de ezeket nem teszi nyilvánosan elérhetővé.
-- A hírek tárolása nem szabványos, így a hozzáférés nem átlátható.
-- Az érdeklődők nem tudnak központi helyen, rendszerezett formában híreket olvasni.
-- A hírek frissítése lassú, és nincs egységes nyilvántartás a korábbi cikkekről.
+- A hírek létrejönnek (pl. sajtóközlemények, belső kommunikációs anyagok), de ezek nem kerülnek egységes, digitális felületre.  
+- A szervezet rendelkezik a tartalommal, de azt nem tudja nyilvánosan közzétenni.  
+- A hírek széttagolt tárolása miatt a visszakeresés nehézkes, nem szabványosított.  
+- Az érdeklődők csak esetlegesen, különböző csatornákon érhetnek el híreket, központi gyűjtőfelület nélkül.  
+- Nincs automatizált rendszer a hírek publikálására és archiválására, ezért a régebbi anyagok elérhetősége korlátozott.  
 
 ## 4. Igényelt üzleti folyamatok modellje
 
-- A felhasználó megnyitja az **Egyszerű Hírportál** főoldalát.
-- A rendszer időrendi sorrendben listázza a híreket, rövid kivonattal.
-- A felhasználó kiválaszthat kategóriát, és a rendszer csak az adott témakörhöz tartozó híreket mutatja.
-- A felhasználó kulcsszó alapján keresést indíthat, amely csak releváns találatokat ad vissza.
-- A felhasználó rákattint egy cikk címére, és megnyitja a részletes nézetet.
-- A részletes nézetben a teljes szöveg, dátum és kategória látható.
-- Ha sok hír van, a rendszer lapozási lehetőséget biztosít, hogy a felhasználó oldalanként böngészhessen.
-- A rendszer hibakezelést biztosít, például „Nincs találat” üzenet a keresésnél, vagy hibaüzenet nem elérhető cikk esetén.
-- A működés egyszerű és áttekinthető, a felhasználó könnyen eligazodik az oldalon.
+A jövőben a rendszer az alábbi egyszerű, felhasználóközpontú folyamatokat biztosítja:
+
+1. **Főoldali böngészés:**  
+   - A felhasználó megnyitja a hírportál főoldalát.  
+   - A rendszer automatikusan időrendi sorrendben jeleníti meg a híreket rövid kivonattal.  
+
+2. **Kategória szerinti szűrés:**  
+   - A felhasználó kiválaszt egy kategóriát.  
+   - A rendszer csak az adott témához tartozó híreket listázza ki.  
+
+3. **Keresés kulcsszó alapján:**  
+   - A felhasználó beír egy keresési kifejezést.  
+   - A rendszer releváns találatokat ad vissza a címekből és a szövegekből.  
+
+4. **Részletes megjelenítés:**  
+   - A felhasználó egy hír címére kattintva elérheti a teljes szöveget.  
+   - A részletes nézetben a hír dátuma és kategóriája is látható.  
+
+5. **Lapozás és hibakezelés:**  
+   - Ha sok hír van, a rendszer oldalanként teszi elérhetővé a cikkeket.  
+   - Ha a keresés nem ad eredményt, a felhasználó „Nincs találat” üzenetet kap.  
+   - Ha egy hír törölve lett vagy nem elérhető, a rendszer megfelelő hibaüzenetet jelenít meg.  
+
+Ezek az igényelt folyamatok egyszerűek, átláthatóak és a felhasználói élményt helyezik középpontba.
 
 ## 5. Követelménylista
 
 ### Funkcionális követelmények
-- Legfrissebb hírek listázása főoldalon.
-- Kategóriák szerinti szűrés.
-- Kulcsszavas keresés címben és szövegben.
-- Részletes cikkmegtekintés.
-- Lapozás nagy elemszám esetén.
-- Hibakezelés: „Nincs találat” üzenet és nem elérhető cikk esetén hibaüzenet.
+
+- Legfrissebb hírek listázása főoldalon időrendi sorrendben.  
+- Hírek szűrése kategóriák szerint (pl. sport, politika, technológia).  
+- Kulcsszavas keresés a hírek címében és szövegében.  
+- Részletes cikkmegtekintés: teljes szöveg, dátum és kategória.  
+- Lapozás nagy elemszám esetén.  
+- Hibakezelés: „Nincs találat” üzenet és 404-es hibaüzenet nem elérhető cikkeknél.  
 
 ### Nem funkcionális követelmények
-- Egyszerű, letisztult felület.
-- Gyors válaszidő az alapvető funkcióknál.
-- Stabil és folyamatos működés.
-- Alapvető adatbiztonsági előírások betartása.
+
+- **Felhasználói élmény:** egyszerű, letisztult és gyorsan átlátható felület.  
+- **Teljesítmény:** gyors betöltési idő, rövid válaszidők.  
+- **Megbízhatóság:** stabil működés, minimális leállás.  
+- **Karbantarthatóság:** moduláris, jól dokumentált kód, amely hosszú távon is könnyen bővíthető.  
+- **Kompatibilitás:** működés minden modern böngészőben és különböző képernyőméreteken (reszponzív design).  
+- **Adatbiztonság:** alapvető biztonsági szabályok betartása, például megbízható fájlkiszolgálás, támadási felület minimalizálása. 
 
 ## 6. Fogalomszótár
 
-- **MVP (Minimum Viable Product):** a rendszer első, működőképes verziója, amely tartalmazza az alapvető funkciókat, mint a hírek listázása, kategóriák szerinti szűrés, kulcsszavas keresés és részletes cikkmegtekintés.
+- **MVP (Minimum Viable Product):** A rendszer első, működőképes verziója, amely tartalmazza az alapfunkciókat: hírek listázása, kategóriák szerinti szűrés, kulcsszavas keresés és részletes cikkmegtekintés.  
+- **Részletes nézet:** Egy hír önálló oldala, ahol a teljes szöveg, a dátum és a kategória megjelenik.  
+- **Kategória:** Egy logikai csoportosítás (pl. sport, politika), amelyhez egy vagy több hír tartozhat.  
+- **Felhasználó:** Az a látogató, aki a hírportált böngészi, de nem rendelkezik szerkesztési vagy adminisztrátori jogosultságokkal.  
