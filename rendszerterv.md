@@ -156,12 +156,6 @@ A rendszer fizikai környezete három fő rétegre épül, amelyek egymással ö
 - Moduláris felépítés: minden funkció önálló modulban, könnyen karbantartható.
 - Kommunikál a HTML réteggel a DOM manipuláció révén és a CSS-sel a dinamikus megjelenítéshez.
 
-```mermaid
-flowchart TD
-  HTML[HTML réteg] --> CSS[CSS réteg]
-  CSS --> JS[JavaScript réteg]
-```
-
 ## 7. Absztrakt domain modell
 
 ## 7.1 Domain specifikáció
@@ -222,12 +216,6 @@ A rendszer rétegzett architektúrát követ, amely lehetővé teszi az egyes ko
   - MVP-ben: hírek és kategóriák JavaScript objektumokban.
   - Bővített verzióban: normalizált SQL adatbázis a nagyobb adatmennyiség hatékony kezelése érdekében.
 
-```mermaid
-flowchart TD
-  UI[HTML + CSS] --> Logic[JS logika]
-  Logic --> Data[JS objektumok / későbbi SQL]
-```
-
 ## 8.2 Biztonsági funkciók
 
 A rendszer tervezésénél különös figyelmet fordítottunk az alapvető biztonsági intézkedésekre, mivel a cél egy olvasható és egyszerű hírportál.
@@ -268,23 +256,6 @@ A hírek és kategóriák adatainak tárolása és kezelése normalizált módon
 - Minden **Hír** egy **Kategóriához** tartozik (many-to-one kapcsolat).
 - A kategóriák segítik a hírek rendszerezését és szűrését.
 
-```mermaid
-erDiagram
-  HIR {
-    int id
-    string cim
-    string kivonat
-    string tartalom
-    date datum
-    int kategoria_id
-  }
-  KATEGORIA {
-    int id
-    string nev
-  }
-  HIR }o--|| KATEGORIA : tartozik
-```
-
 ## 10. Implementációs terv
 
 A rendszer implementációja moduláris felépítést követ, amely lehetővé teszi a könnyű karbantartást és a jövőbeni bővítést. A frontend, a logikai és az adatkezelő modulok különálló fájlokban kerülnek megvalósításra.
@@ -319,15 +290,6 @@ A rendszer implementációja moduláris felépítést követ, amely lehetővé t
 - **Újrafelhasználhatóság:** komponensek könnyen átvihetők más projektekbe.  
 - **Bővíthetőség:** további funkciók (pl. kommentek, felhasználói fiókok) könnyen integrálhatók.
 
-```mermaid
-flowchart LR
-  HTML[HTML] --> CSS[CSS]
-  HTML --> JS[JS modulok]
-  JS --> HírekLista
-  JS --> Kereső
-  JS --> Szűrő
-```
-
 ## 11. Telepítési terv
 
 A telepítési terv célja, hogy a fejlesztett hírportál stabilan és megbízhatóan kerüljön fel a web szerverre, biztosítva a folyamatos működést a felhasználók számára.
@@ -346,12 +308,6 @@ A telepítési terv célja, hogy a fejlesztett hírportál stabilan és megbízh
    - Böngészőben történő tesztelés különböző eszközökön (mobil, tablet, desktop).  
    - Hibák, reszponzivitási problémák, betöltési idők ellenőrzése.
 
-```mermaid
-flowchart TD
-  Dev[Fejlesztői gép] --> Git[Git verziókezelés]
-  Git --> Server[Web szerver]
-  Server --> Browser[Felhasználó böngésző]
-```
 
 ## 12. Karbantartási terv
 
@@ -380,13 +336,6 @@ A karbantartási terv célja, hogy a hírportál hosszú távon stabilan és meg
 - **Dokumentálás:** verziók leírása, változások nyilvántartása, fejlesztési jegyzetek rögzítése.
 - **Mentések:** rendszeres adat- és kódmentések biztosítják az adatvesztés elleni védelmet, gyors helyreállítási lehetőséget biztosítva.
 
-```mermaid
-flowchart TD
-  Kód[Kód és adat] --> GitRepo[Git verziókezelés]
-  GitRepo --> Mentés[Rendszeres mentések]
-  Mentés --> Helyreállítás[Korábbi verzió visszaállítása]
-```
-
 ### 12.4 Karbantartási ciklus
 
 A karbantartási ciklus célja a hírportál folyamatos megbízhatóságának és felhasználói élményének biztosítása. A ciklus rendszeres ellenőrzéseket és dokumentált folyamatokat tartalmaz.
@@ -402,11 +351,3 @@ A karbantartási ciklus célja a hírportál folyamatos megbízhatóságának é
 - **Frissítések tervezése:** 
   - Az új funkciók és hibajavítások ütemezése a következő fejlesztési ciklusokra.
   - Minden frissítés előzetes tesztelésen és jóváhagyáson megy keresztül a minőség biztosítása érdekében.
-
-```mermaid
-flowchart TD
-  Tesztelés[Heti/Havi tesztelés] --> HibákRögzítése[Hibák és funkcióigények dokumentálása]
-  HibákRögzítése --> Prioritás[Prioritások meghatározása]
-  Prioritás --> Fejlesztés[Frissítések és hibajavítások ütemezése]
-  Fejlesztés --> Tesztelés
-```
